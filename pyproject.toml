@@ -1,0 +1,7 @@
+[tool.vulture]
+exclude = [
+    "venv/",
+    "__pycache__/",
+    ".git/",
+]
+min_confidence = 80

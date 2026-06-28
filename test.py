@@ -7,8 +7,7 @@ load_dotenv()
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
 response = client.models.generate_content(
-    model="gemini-2.5-flash",
-    contents="What is Machine Learning?"
+    model="gemini-2.5-flash", contents="What is Machine Learning?"
 )
 
 print(response.text)
