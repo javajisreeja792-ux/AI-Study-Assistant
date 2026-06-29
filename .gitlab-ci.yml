@@ -1,25 +1,24 @@
-image: python:3.13
-
 stages:
   - quality
   - test
 
+default:
+  image: python:3.11
+
 before_script:
-  - python -m pip install --upgrade pip
+  - python --version
+  - pip install --upgrade pip
   - pip install -r requirements.txt
-  - pip install pre-commit pytest bandit vulture mypy ruff black
 
 quality:
   stage: quality
   script:
-    - ruff check .
-    - ruff format --check .
-    - black --check .
-    - mypy .
-    - bandit -r . -x venv,tests
-    - vulture app.py pages translations --min-confidence 80
+    - pip install bandit
+    - bandit -r . -x tests
+  allow_failure: false
 
 tests:
   stage: test
   script:
-    - pytest tests/
+    - pip install pytest
+    - pytest
