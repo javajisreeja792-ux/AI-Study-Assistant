@@ -1,24 +1,28 @@
+image: python:3.12
+
 stages:
   - quality
   - test
 
-default:
-  image: python:3.11
+cache:
+  paths:
+    - .cache/pip
 
 before_script:
   - python --version
   - pip install --upgrade pip
   - pip install -r requirements.txt
+  - pip install pytest black ruff mypy bandit
 
 quality:
   stage: quality
   script:
-    - pip install bandit
-    - bandit -r . -x tests
-  allow_failure: false
+    - ruff check .
+    - black --check .
+    - mypy .
+    - bandit -r . -c bandit.yaml
 
-tests:
+test:
   stage: test
   script:
-    - pip install pytest
     - pytest
