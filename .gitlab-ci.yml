@@ -20,7 +20,7 @@ quality:
     - ruff check .
     - black --check .
     - mypy .
-    - bandit -r . -c bandit.yaml
+    - bandit -r . -x tests,venv,.venv
 
 test:
   stage: test
