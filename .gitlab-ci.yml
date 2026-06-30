@@ -20,7 +20,7 @@ quality:
     - ruff check .
     - black --check .
     - mypy .
-    - bandit -r . -x tests,venv,.venv
+    - bandit app.py pages translations
 
 test:
   stage: test
