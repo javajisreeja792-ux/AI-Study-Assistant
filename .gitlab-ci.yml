@@ -20,7 +20,7 @@ quality:
     - ruff check .
     - black --check .
     - mypy .
-    - bandit app.py pages translations
+    - bandit -r app.py pages translations
 
 test:
   stage: test
