@@ -9,7 +9,7 @@ dependencies = [
     "streamlit",
     "google-genai",
     "python-dotenv",
-    "pymupdf",
+    "pypdf",
     "pytest",
 ]
 
